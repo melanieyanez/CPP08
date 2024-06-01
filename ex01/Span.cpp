@@ -6,7 +6,7 @@
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:47:42 by melanieyane       #+#    #+#             */
-/*   Updated: 2024/06/01 10:32:17 by melanieyane      ###   ########.fr       */
+/*   Updated: 2024/06/01 11:07:39 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,20 @@ const std::vector<int> &Span::getData() const{return this->_data;}
 const unsigned int &Span::getN() const{return this->_N;}
 
 void Span::addNumber(int Number){
-	if (_data.size() >= _N)
+	if (this->_data.size() >= this->_N)
 		throw FullException();
-	_data.push_back(Number);
+	this->_data.push_back(Number);
+}
+
+void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end){
+	while (begin != end && this->_data.size() < this->_N) {
+        this->_data.push_back(*begin);
+        ++begin;
+    }
+    if (begin != end)
+	{
+        throw FullException();
+    }
 }
 		
 int  Span::shortestSpan(void) const{
