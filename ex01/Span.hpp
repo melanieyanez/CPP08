@@ -6,7 +6,7 @@
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:47:31 by melanieyane       #+#    #+#             */
-/*   Updated: 2024/06/01 10:59:11 by melanieyane      ###   ########.fr       */
+/*   Updated: 2024/06/01 12:01:16 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ class Span{
 			public:
 				virtual const char *what() const throw(){
 					return "Oops! The span is full!";
-			}
+				}
 		};
 
 		class TooSmallException : public std::exception
@@ -51,7 +51,7 @@ class Span{
 			public:
 				virtual const char *what() const throw(){
 					return "Oops! The span is not big enough!";
-			}
+				}
 		};
 	
 	private:

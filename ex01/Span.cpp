@@ -6,7 +6,7 @@
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:47:42 by melanieyane       #+#    #+#             */
-/*   Updated: 2024/06/01 11:07:39 by melanieyane      ###   ########.fr       */
+/*   Updated: 2024/06/01 12:02:49 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,13 @@ void Span::addNumber(int Number){
 }
 
 void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end){
-	while (begin != end && this->_data.size() < this->_N) {
-        this->_data.push_back(*begin);
-        ++begin;
-    }
-    if (begin != end)
+	while (begin != end && this->_data.size() < this->_N)
 	{
-        throw FullException();
-    }
+		this->_data.push_back(*begin);
+		++begin;
+	}
+	if (begin != end)
+		throw FullException();
 }
 		
 int  Span::shortestSpan(void) const{
@@ -58,10 +57,10 @@ int  Span::shortestSpan(void) const{
 	int minSpan = std::numeric_limits<int>::max();
 	for (size_t i = 1; i < sortedData.size(); ++i)
 	{
-    	int span = sortedData[i] - sortedData[i - 1];
-    	if (span < minSpan)	
-    		minSpan = span;
-    }
+		int span = sortedData[i] - sortedData[i - 1];
+		if (span < minSpan)	
+			minSpan = span;
+	}
 	return minSpan;
 }
 		
