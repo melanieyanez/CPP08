@@ -1,5 +1,13 @@
 {
 	"files.associations": {
-		"exception": "cpp"
+		"exception": "cpp",
+		"new": "cpp",
+		"tuple": "cpp",
+		"typeinfo": "cpp",
+		"variant": "cpp",
+		"__nullptr": "cpp",
+		"cmath": "cpp",
+		"compare": "cpp",
+		"type_traits": "cpp"
 	}
 }

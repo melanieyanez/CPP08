@@ -1,6 +1,6 @@
 NAME = ex01
 
-SRCS = main.cpp
+SRCS = Span.cpp main.cpp
 OBJS := $(SRCS:%.cpp=%.o)
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
