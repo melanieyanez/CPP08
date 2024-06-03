@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:12:43 by melanieyane       #+#    #+#             */
-/*   Updated: 2024/05/31 13:37:43 by melanieyane      ###   ########.fr       */
+/*   Updated: 2024/06/03 16:48:53 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define EASYFIND_HPP
 
 #include <iterator>
+#include <algorithm>
 #include <exception>
 
 class ValueNotFoundException : public std::exception
@@ -27,13 +28,10 @@ class ValueNotFoundException : public std::exception
 template<typename T>
 typename T::const_iterator easyfind(const T &container, const int &value)
 {
-	typename T::const_iterator it;
-	typename T::const_iterator ite = container.end();
-	for (it = container.begin(); it != ite; ++it){
-		if (*it == value)
-			return it;
-	}
-	throw ValueNotFoundException();
+	typename T::const_iterator it = std::find(container.begin(), container.end(), value);
+	if (it == container.end())
+		throw ValueNotFoundException();
+	return it;
 }
 
 #endif
