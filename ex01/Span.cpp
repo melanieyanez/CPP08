@@ -6,11 +6,12 @@
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:47:42 by melanieyane       #+#    #+#             */
-/*   Updated: 2024/06/01 12:02:49 by melanieyane      ###   ########.fr       */
+/*   Updated: 2024/06/03 19:31:06 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <functional>
 
 Span::Span() : _N(0){}
 
@@ -40,14 +41,9 @@ void Span::addNumber(int Number){
 }
 
 void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end){
-	while (begin != end && this->_data.size() < this->_N)
-	{
-		this->_data.push_back(*begin);
-		++begin;
-	}
-	if (begin != end)
-		throw FullException();
+	std::for_each(begin, end, std::bind1st(std::mem_fun(&Span::addNumber), this));
 }
+
 		
 int  Span::shortestSpan(void) const{
 	if (_data.size() < 2)
