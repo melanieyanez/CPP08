@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:47:26 by melanieyane       #+#    #+#             */
-/*   Updated: 2024/06/01 12:00:21 by melanieyane      ###   ########.fr       */
+/*   Updated: 2024/06/25 13:47:13 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,6 @@ int main(void){
 		std::cerr << "Exception caught: " << e.what() << std::endl;
 	}
 	std::cout << "Number of elements in Span: " << largeSpan2.getData().size() << std::endl;
-	std::cout << "Shortest Span: " << largeSpan2.shortestSpan() << std::endl;
-	std::cout << "Longest Span: " << largeSpan2.longestSpan() << std::endl;
 
 	std::cout << "******************************************************" << std::endl;
 	std::cout << "Adding 10,000 then another 10,000 random numbers to a Span of capacity 15,000:" << std::endl;

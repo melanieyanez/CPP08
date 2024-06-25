@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:47:31 by melanieyane       #+#    #+#             */
-/*   Updated: 2024/06/01 12:01:16 by melanieyane      ###   ########.fr       */
+/*   Updated: 2024/06/25 13:44:09 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <exception>
 #include <iterator>
 #include <iostream>
+#include <limits>
 
 class Span{
 
@@ -42,7 +43,7 @@ class Span{
 		{
 			public:
 				virtual const char *what() const throw(){
-					return "Oops! The span is full!";
+					return "Oops! The span's capacity is exceeded!";
 				}
 		};
 

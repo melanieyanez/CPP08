@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 15:27:51 by melanieyane       #+#    #+#             */
-/*   Updated: 2024/06/02 15:52:24 by melanieyane      ###   ########.fr       */
+/*   Updated: 2024/06/25 14:38:57 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 #include <list>
 
 template <typename T>
-void displayStack(const MutantStack<T> &stack) {
-	for (typename MutantStack<T>::const_iterator it = stack.cbegin(); it != stack.cend(); ++it) {
+void displayStack(MutantStack<T> &stack) {
+	for (typename MutantStack<T>::iterator it = stack.begin(); it != stack.end(); ++it) {
 		std::cout << *it << " ";
 	}
 	std::cout << std::endl;
@@ -42,16 +42,37 @@ void myTest()
 	std::cout << "Stack after pop: ";
 	displayStack(mutant0);
 	std::cout << "mutant0.top() = " << mutant0.top() << std::endl;
-	
+
 	std::cout << "******************************************************" << std::endl;
 	std::cout << "Testing iterator of MutantStack" << std::endl;
+	
 	std::cout << "Stack elements using iterator: ";
 	displayStack(mutant0);
+	
 	std::cout << "Testing iterator accessing specific element" << std::endl;
 	MutantStack<int>::iterator it = mutant0.begin();
 	std::advance(it, 1);
 	std::cout << "*(it + 1) = " << *it << std::endl;
 	
+    std::cout << "Modifying elements through iterators" << std::endl;
+    for (MutantStack<int>::iterator it = mutant0.begin(); it != mutant0.end(); ++it) {
+        *it *= 2;
+    }
+    std::cout << "Stack after modification: ";
+    displayStack(mutant0);
+	
+    std::cout << "Adding elements to the stack" << std::endl;
+    mutant0.push(8);
+   	mutant0.push(10);
+   	std::cout << "Stack after adding elements: ";
+    displayStack(mutant0);
+
+   	std::cout << "Removing elements from the stack" << std::endl;
+    mutant0.pop();
+    mutant0.pop();
+    std::cout << "Stack after removing elements: ";
+    displayStack(mutant0);
+
 	std::cout << "******************************************************" << std::endl;
 	std::cout << "Testing operator= overload" << std::endl;
 	MutantStack<int> mutant1;
@@ -66,31 +87,6 @@ void myTest()
 	displayStack(mutant2);
 	
 	std::cout << "******************************************************" << std::endl;
-	std::cout << "Testing reverse iterator of MutantStack" << std::endl;
-	std::cout << "Stack elements in reverse order: ";
-	for (MutantStack<int>::reverse_iterator rit = mutant2.rbegin(); rit != mutant2.rend(); ++rit) {
-		std::cout << *rit << " ";
-	}
-	std::cout << std::endl;
-	
-	std::cout << "******************************************************" << std::endl;
-	std::cout << "Testing const iterator of MutantStack" << std::endl;
-	const MutantStack<int> mutantConst(mutant2);
-	std::cout << "Const stack elements: ";
-	for (MutantStack<int>::const_iterator cit = mutantConst.cbegin(); cit != mutantConst.cend(); ++cit) {
-		std::cout << *cit << " ";
-	}
-	std::cout << std::endl;
-	
-	std::cout << "******************************************************" << std::endl;
-	std::cout << "Testing const reverse iterator of MutantStack" << std::endl;
-	std::cout << "Const stack elements in reverse order: ";
-	for (MutantStack<int>::const_reverse_iterator crit = mutantConst.crbegin(); crit != mutantConst.crend(); ++crit) {
-		std::cout << *crit << " ";
-	}
-	std::cout << std::endl;
-	
-	std::cout << "******************************************************" << std::endl;
 	std::cout << "Testing large number of elements" << std::endl;
 	MutantStack<int> largeStack;
 	for (int i = 0; i < 10000; ++i) {
@@ -98,6 +94,7 @@ void myTest()
 	}
 	std::cout << "Large stack created. Size: " << largeStack.size() << std::endl;
 	std::cout << "Top element of large stack: " << largeStack.top() << std::endl;
+	
 	return;
 }
 

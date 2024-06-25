@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
+/*   By: myanez-p <myanez-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:47:42 by melanieyane       #+#    #+#             */
-/*   Updated: 2024/06/03 19:31:06 by melanieyane      ###   ########.fr       */
+/*   Updated: 2024/06/25 13:44:56 by myanez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,10 @@ void Span::addNumber(int Number){
 }
 
 void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end){
-	std::for_each(begin, end, std::bind1st(std::mem_fun(&Span::addNumber), this));
+    if (this->_data.size() + std::distance(begin, end) > this->_N)
+        throw FullException();
+    this->_data.insert(this->_data.end(), begin, end);
 }
-
 		
 int  Span::shortestSpan(void) const{
 	if (_data.size() < 2)
